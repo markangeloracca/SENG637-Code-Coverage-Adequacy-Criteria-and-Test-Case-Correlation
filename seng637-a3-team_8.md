@@ -64,6 +64,31 @@ The team followed a structured approach beginning with the instrumentation of th
 
 #### iv. Test Cases Def-Use Pairs Covered
 
+The DU-pairs from section iii are traced through each test case below.
+The method has the following variables: `data`, `column`, `total`, `rowCount`, `r`, `n`.
+
+| Test Case | Path Taken | DU-Pairs Covered |
+|---|---|---|
+| `calculateColumnTotalWithPositiveValues()` | 1→2→3→4→5→6→7→4→5→6→7→4→5→6→7→4→8 | (1,2),(1,3),(1,5),(1,5),(3,4),(3,5),(3,6),(3,8),(3,7),(6,6),(6,8),(7,4),(7,5),(7,7),(5,5),(5,6) |
+| `calculateColumnTotalWithNegativeValues()` | 1→2→3→4→5→6→7→4→5→6→7→4→8 | (1,2),(1,3),(1,5),(3,4),(3,5),(3,6),(3,8),(3,7),(6,6),(6,8),(7,4),(7,5),(7,7),(5,5),(5,6) |
+| `calculateColumnTotalWithNullValues()` | 1→2→3→4→5→7→4→5→6→7→4→5→6→7→4→8 | (1,2),(1,3),(1,5),(3,4),(3,5),(3,8),(3,7),(6,6),(6,8),(7,4),(7,5),(7,7),(5,5),(5,6) |
+| `calculateColumnTotalWithAllNullValues()` | 1→2→3→4→5→7→4→5→7→4→8 | (1,2),(1,3),(1,5),(3,4),(3,5),(3,8),(3,7),(7,4),(7,5),(7,7),(5,5) |
+| `calculateColumnTotalWithEmptyTable()` | 1→2→3→4→8 | (1,2),(1,3),(3,4),(3,8) |
+| `calculateColumnTotalThrowsExceptionForNullData()` | 1→2 | (1,2) |
+
+**Summary of DU-pair coverage:**
+
+| Variable | All DU-Pairs | Covered By Tests | Coverage |
+|---|---|---|---|
+| data | (1,2),(1,3),(1,5) | (1,2),(1,3),(1,5) | 3/3 = 100% |
+| column | (1,5) | (1,5) | 1/1 = 100% |
+| total | (3,6),(3,8),(6,6),(6,8) | (3,6),(3,8),(6,6),(6,8) | 4/4 = 100% |
+| rowCount | (3,4) | (3,4) | 1/1 = 100% |
+| r | (3,4),(3,5),(3,7),(7,4),(7,5),(7,7) | (3,4),(3,5),(3,7),(7,4),(7,5),(7,7) | 6/6 = 100% |
+| n | (5,5),(5,6) | (5,5),(5,6) | 2/2 = 100% |
+
+**Overall DU-pair coverage = 17/17 = 100%**
+
 ### Method 2: Range class' contains(double)
 
 #### i. Data Flow Graph (DFG)
